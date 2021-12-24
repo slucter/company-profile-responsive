@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/classes.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/js/main.js" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <title>Company Profile</title>
 </head>
@@ -16,13 +15,26 @@
                 <div class="logo">
                     <img src="./assets/img/LogoColor.png" alt="Loog">
                 </div>
-                <div class="burger-nav">
+                <div class="burger-nav" onclick="openMenu()">
                     <div class="burger-line"></div>
+                </div>
+                <div class="nav-menus-item gap-20 fade">
+                    <div class="close-nav-menu">
+                        <div onclick="closeMenu()">
+                            <i class="ri-close-line font-blue" style="font-size: 30px;"></i>
+                        </div>
+                    </div>
+                    <a onclick="selectMenu('#home')" class="text-title-sm font-blue cursor-pointer">Home</a>
+                    <a onclick="selectMenu('#about')" class="text-title-sm font-blue cursor-pointer">About</a>
+                </div>
+                <div class="nav-menus-item-desktop gap-20 fade">
+                    <a onclick="selectMenu('#home')" class="text-title-sm font-blue cursor-pointer">Home</a>
+                    <a onclick="selectMenu('#about')" class="text-title-sm font-blue cursor-pointer">About</a>
                 </div>
             </div>
         </nav>
 
-        <section class="hero-banner">
+        <section class="hero-banner" id="home">
             <div class="wrapper-content text-hero-area">
                 <h1 class="text-title">Discover Your Wonder</h1>
                 <p class="text-content">
@@ -32,9 +44,9 @@
             <div class="layer-gradient"></div>
         </section>
         
-        <section class="about-us wrapper-content">
+        <section class="about-us wrapper-content" id="about">
             <div class="slider-wrapper">
-                <div class="slider-single">
+                <div class="slider-single fade">
                     <div class="text-title font-blue mb-14">Who We Are</div>
                     <div class="text-title-sm mb-8">Technology Company</div>
                     <div class="text-content font-gray">
@@ -42,7 +54,7 @@
                     </div>
                 </div>
 
-                <div class="slider-single">
+                <div class="slider-single fade">
                     <div class="text-title font-blue mb-14">What we do</div>
                     <div class="text-title-sm mb-8">Professional Brand Management</div>
                     <div class="text-content font-gray">
@@ -50,7 +62,7 @@
                     </div>
                 </div>
 
-                <div class="slider-single">
+                <div class="slider-single fade">
                     <div class="text-title font-blue mb-14">How we do</div>
                     <div class="text-title-sm mb-8">Strategize, Design, Collaborate</div>
                     <div class="text-content font-gray">
@@ -60,20 +72,21 @@
             </div>
             <div class="wrapper-nav-btn-slider">
                 <div class="slider-nav-count">
-                    <div class="rubik-24 font-medium">
+                    <div class="rubik-24 font-medium currentSlideCount">
                         01
                     </div>
                     <div class="rubik-24 font-medium font-gray">
                         /
                     </div>
-                    <div class="rubik-16 font-medium font-gray">03</div>
+                    <div class="rubik-16 font-medium font-gray countsSlider">03</div>
                 </div>
-                <div class="slider-btn">
-                    <div class="btn-wrap btn-disabled">
-                        <i class="ri-arrow-left-line"></i>
+                <div class="slider-btn gap-3">
+                    <!-- class btn-disabled -->
+                    <div class="btn-wrap cursor-pointer" onclick="navigateSlide(-1)">
+                        <i class="ri-arrow-left-line font-light"></i>
                     </div>
-                    <div class="btn-wrap">
-                        <i class="ri-arrow-right-line font-gray"></i>
+                    <div class="btn-wrap cursor-pointer" onclick="navigateSlide(+1)">
+                        <i class="ri-arrow-right-line font-light"></i>
                     </div>
                 </div>
             </div>
@@ -127,6 +140,41 @@
             </div>
         </section>
 
+        <section class="about-3">
+            <div class="wrapper-content row container-about-3 gap-25">
+                <div class="col gap-8">
+                    <div class="text-title-md font-semi-bold font-blue">OUR SPECIALITY</div>
+                    <div class="text-content font-gray">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod libero vel leo auctor, in venenatis nulla consequat. Sed commodo nunc sit amet congue aliquam.
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="icon-slider mb-24">
+                        <img src="./assets/img/icon3.png" alt="icon1">
+                        <img src="./assets/img/icon2.png" alt="icon2">
+                        <img src="./assets/img/icon1.png" alt="icon3">
+                    </div>
+                    <div class="text-align-center text-content font-w-light" style="color: #A7A7A7">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod libero vel leo auctor, in venenatis nulla consequat. Sed commodo nunc sit amet congue aliquam.
+                    </div>
+                    <div class="slider-navigation-group">
+                        <div>
+                            <i class="ri-arrow-left-line"></i>
+                        </div>
+                        <div class="nav-dot-group">
+                            <div class="dot dot-active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div>
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer>
             <div class="wrapper-content row gap-29">
                 <div class="col logo-footer">
@@ -134,16 +182,28 @@
                 </div>
                 <div class="col">
                     <div class="wrapper-footer-accordion">
-                        <div class="accordion">
+                        <div class="accordion cursor-pointer">
                             <div class="text-accordion-title">
                                 TECHNOLOGY DEPARTMENT
                             </div>
                             <i class="ri-arrow-down-s-line"></i>
                         </div>
-                        <div class="accordion-content">
+                        <div class="accordion-content fade" style="display: none;">
                             <div class="text-accordion-content">
                                 Jl. Lembong No 8
                                 Kel. Braga Kec. Sumur Bandung, Kota Bandung, Jawa Barat
+                            </div>
+                        </div>
+
+                        <div class="accordion cursor-pointer">
+                            <div class="text-accordion-title">
+                                TEST NEXT
+                            </div>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                        <div class="accordion-content fade" style="display: none;">
+                            <div class="text-accordion-content">
+                                My Accordion
                             </div>
                         </div>
                     </div>
@@ -163,5 +223,6 @@
         </footer>
         
     </div>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
