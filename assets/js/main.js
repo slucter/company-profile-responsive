@@ -46,3 +46,17 @@ function selectMenu(link) {
     location.href = link
     closeMenu()
 }
+
+// Hide On Scroll
+
+var prevScrollpos = window.pageYOffset;
+var bodyH = document.querySelector('body').offsetHeight
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-150px";
+  }
+  prevScrollpos = currentScrollPos;
+}
